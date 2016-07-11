@@ -175,3 +175,27 @@ Is resolved to:
   ]
 }
 ```
+
+## Requesting
+
+Layout is resolved by default as soon as the `afterGet` hook is attached. This can be changed by adding a `resolveLayout=false` parameter to the URL.
+
+## Metadata
+
+The raw layout schemas can be appended to the `metadata` object of a `GET` response by defining a `addSchemaToMetadata` property in the `options` object.
+
+```json
+"hooks": {
+  "afterGet": [
+    {
+      "hook": "layout",
+      "options": {
+        "layoutField": "myCustomField",
+        "addSchemaToMetadata": true
+      }   
+    }
+  ],
+  "beforeCreate": "...",
+  "beforeUpdate": "..."
+}
+```
