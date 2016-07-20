@@ -12,45 +12,51 @@ var Providers = {
 }
 
 module.exports = function (obj, type, data) {
-  var source = data.options && data.options.source && data.options.target && obj[data.options.source]
+  // Ensure `obj` is an array
+  obj = (obj instanceof Array) ? obj : [obj]
 
-  if (!source || !obj._id) return
-  
-  // Ensure `source` is an array
-  if (!(source instanceof Array)) {
-    source = [source]
-  }
+  obj.forEach((doc) => {
+    var source = data.options && data.options.source && data.options.target && doc[data.options.source]
 
-  var queue = []
-  var result = []
-  
-  source.forEach((oembed, index) => {
-    var provider = oembed && oembed.provider && Providers[oembed.provider]
+    if (!source || !doc._id) return
 
-    if (!provider) return
+    // Ensure `source` is an array
+    if (!(source instanceof Array)) {
+      source = [source]
+    }
 
-    queue.push(request({
-      json: true,
-      uri: provider.getUrl(oembed.url)
-    }).then((response) => {
-      var value = getPath(response, provider.path)
-      var targetPath = buildObjectFromPath(data.options.target, value)
+    var queue = []
+    var result = []
 
-      oembed = _.extend(oembed, targetPath)
-    }))
-  })
+    source.forEach((oembed, index) => {
+      var provider = oembed && oembed.provider && Providers[oembed.provider]
 
-  Promise.all(queue).then(() => {
-    var model = Model(data.collection)
-    var update = {}
+      if (!provider) return
+      queue.push(request({
+        json: true,
+        uri: provider.getUrl(oembed.url)
+      }).then((response) => {
+        var value = getPath(response, provider.path)
+        var targetPath = buildObjectFromPath(data.options.target, value)
 
-    update[data.options.source] = source
+        oembed = _.extend(oembed, targetPath)
+      }).catch((err) => {
+        return Promise.resolve(true)
+      }))
+    })
 
-    model.update({_id: obj._id}, update, function (err, res) {
-      console.log('** RESPONSE:', res)
+    Promise.all(queue).then(() => {
+      var model = Model(data.collection)
+      var update = {}
+
+      update[data.options.source] = source
+
+      model.update({_id: doc._id}, update, function (err, res) {
+        //console.log('** RESPONSE:', res)
+      })
     })
   })
-  
+
   return obj
 }
 
@@ -86,4 +92,3 @@ function getPath(object, path, breadcrumbs) {
   
   return getPath(object[breadcrumbs[0]], path, breadcrumbs.slice(1))
 }
-
