@@ -76,13 +76,6 @@ function buildObjectFromPath(path, value, breadcrumbs) {
   return obj
 }
 
-function getEmbedUrl(provider, url) {
-  switch (provider) {
-    case 'twitter':
-      return 
-  }
-}
-
 function getPath(object, path, breadcrumbs) {
   breadcrumbs = breadcrumbs || path.split('.')
   
