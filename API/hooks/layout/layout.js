@@ -1,8 +1,8 @@
 var url = require('url')
 
 module.exports = function (obj, type, data) {
-  var queryParameters = url.parse(data.req.url, true).query
-  var resolveLayout = (queryParameters.resolveLayout !== 'false')
+  var queryParameters = data.req && url.parse(data.req.url, true).query
+  var resolveLayout = queryParameters ? (queryParameters.resolveLayout !== 'false') : true
   var layoutField = (data.options && data.options.field) || '_layout'
 
   if (data.schema && data.schema[layoutField] && data.schema[layoutField].schema) {
