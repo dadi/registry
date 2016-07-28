@@ -13,7 +13,7 @@ The hook will handle dot notated `foo.bar` lookups, as long as the field is not 
 
 ## Attaching the hook
 
-The layout hook needs to be attached to the `beforeCreate` or `beforeUpdate` hook list.
+The slugify hook needs to be attached to the `beforeCreate` or `beforeUpdate` hook list.
 
 ```json
 "hooks": {
