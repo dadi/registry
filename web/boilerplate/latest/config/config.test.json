@@ -1,0 +1,33 @@
+{
+  "app": {
+    "name": "Project Name Here"
+  },
+  "server": {
+    "host": "127.0.0.1",
+    "port": 5000
+  },
+  "cluster": false,
+  "api": {
+    "enabled": false,
+    "host": "127.0.0.1",
+    "port": 3000
+  },
+  "auth": {
+    "tokenUrl":"/token",
+    "clientId":"your-client-id",
+    "secret":"your-secret"
+  },
+  "global" : {
+    "baseUrl": "http://www.example.com"
+  },
+  "paths": {
+    "workspace": "test/app",
+    "datasources": "test/app/datasources",
+    "pages": "test/app/pages",
+    "events": "test/app/events",
+    "middleware": "test/app/middleware",
+    "media": "test/app/media",
+    "public": "test/app/public",
+    "routes": "test/app/routes"
+  }
+}
