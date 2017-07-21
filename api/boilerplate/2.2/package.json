@@ -1,0 +1,7 @@
+{
+  "name": "@dadi/api-boilerplate",
+  "main": "server.js",
+  "dependencies": {
+    "@dadi/api": "2.2.x"
+  }
+}
