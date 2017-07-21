@@ -2,6 +2,6 @@
   "name": "@dadi/web-boilerplate",
   "main": "server.js",
   "dependencies": {
-    "@dadi/web": "latest"
+    "@dadi/web": "3.x"
   }
 }
