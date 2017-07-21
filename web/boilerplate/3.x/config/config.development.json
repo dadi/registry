@@ -15,7 +15,6 @@
     "workspace": "workspace",
     "datasources": "workspace/datasources",
     "pages": "workspace/pages",
-    "partials": "workspace/partials",
     "events": "workspace/events",
     "middleware": "workspace/middleware",
     "media": "workspace/media",
