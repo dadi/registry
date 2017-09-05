@@ -1,0 +1,21 @@
+language: node_js
+
+node_js:
+  - "7"
+
+notifications:
+  email: false
+
+script: npm start
+
+cache:
+  directories:
+    - "node_modules"
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  on:
+    branch: master
+  local_dir: "output"
