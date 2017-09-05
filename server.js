@@ -1,6 +1,7 @@
 'use strict'
 
 const fs = require('fs')
+const mkdirp = require('mkdirp')
 const path = require('path')
 const OUTPUT_DIR = path.join(__dirname, 'output')
 
@@ -24,8 +25,7 @@ files.forEach(file => {
   }
 })
 
-fs.rmdirSync(OUTPUT_DIR)
-fs.mkdirSync(OUTPUT_DIR)
+mkdirp.sync(OUTPUT_DIR)
 fs.writeFileSync(
   path.join(OUTPUT_DIR, 'versions.json'),
   JSON.stringify(boilerplateVersions)

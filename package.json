@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/dadi/registry/issues"
   },
-  "homepage": "https://github.com/dadi/registry#readme"
+  "homepage": "https://github.com/dadi/registry#readme",
+  "dependencies": {
+    "mkdirp": "^0.5.1"
+  }
 }
