@@ -1,0 +1,1 @@
+function body_0(chk,ctx){return chk.w("<footer>\n  &#x26A1; Powered by <a href=\"https://dadi.tech/platform/web\">DADI Web ").f(ctx.get(["version"], false),ctx,"h").w("</a><br>© ").h("formatDate",ctx,{},{"unix":ctx.getPath(false, ["global","timestamp"]),"format":"YYYY"},"h").w("\n</footer>\n\n</body>\n</html>");}
