@@ -1,1 +1,0 @@
-function body_0(chk,ctx){return chk.p("partials/header",ctx,ctx,{}).w("\n\n").s(ctx.getPath(false, ["posts","results"]),ctx,{"block":body_1},{}).w("\n\n").p("partials/pagination",ctx,ctx,{"currentPage":ctx.getPath(false, ["posts","metadata","page"]),"totalPages":ctx.getPath(false, ["posts","metadata","totalPages"])}).w("\n\n").p("partials/footer",ctx,ctx,{});}

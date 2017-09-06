@@ -1,1 +1,0 @@
-function body_0(chk,ctx){return chk.p("partials/header",ctx,ctx,{}).w("\n\n<article>\n\t<h2>Page not found!</h2>\n\t<p>It has either been moved, or it never existed at all.</p>\n</article>\n\n").p("partials/footer",ctx,ctx,{});}

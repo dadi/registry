@@ -1,1 +1,0 @@
-function body_0(chk,ctx){return chk.w("<div class=\"pagination\">\n  ").h("paginate",ctx,{"current":body_1,"prev":body_4,"next":body_7,"block":body_8},{"page":ctx.get(["currentPage"], false),"totalPages":ctx.get(["totalPages"], false),"path":body_11},"h").w("\n</div>");}

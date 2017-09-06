@@ -1,8 +1,7 @@
 {
   "page": {
     "name": "post",
-    "description": "An individual post view.",
-    "language": "en"
+    "description": "An individual post view."
   },
   "routes": [
     {

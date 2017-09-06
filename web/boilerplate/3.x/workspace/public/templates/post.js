@@ -1,1 +1,0 @@
-function body_0(chk,ctx){ctx=ctx.shiftBlocks(blocks);return chk.p("partials/header",ctx,ctx,{}).w("\n\n").w("\n\n").s(ctx.getPath(false, ["posts","results"]),ctx,{"block":body_2},{}).w("\n\n").p("partials/footer",ctx,ctx,{});}

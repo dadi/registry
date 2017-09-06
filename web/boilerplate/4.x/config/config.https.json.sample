@@ -22,12 +22,5 @@
   },
   "global" : {
     "baseUrl": "http://www.example.com"
-  },
-  "virtualDirectories": [
-    {
-      "path": "/data/legacy_features",
-      "index": "default.html",
-      "forceTrailingSlash": false
-    }
-  ]
+  }
 }
