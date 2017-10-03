@@ -4,7 +4,7 @@ const fs = require('fs')
 const mkdirp = require('mkdirp')
 const path = require('path')
 
-const EXTENSION = '.zip'
+const EXTENSION = '.tar.gz'
 const OUTPUT_DIR = path.join(__dirname, 'output')
 
 const files = fs.readdirSync(__dirname)
