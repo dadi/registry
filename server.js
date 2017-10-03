@@ -4,7 +4,7 @@ const fs = require('fs')
 const mkdirp = require('mkdirp')
 const path = require('path')
 
-const EXTENSION = '.tar.gz'
+const EXTENSION = '.tgz'
 const OUTPUT_DIR = path.join(__dirname, 'output')
 
 const files = fs.readdirSync(__dirname)
@@ -23,9 +23,7 @@ files.forEach(file => {
       )
 
       boilerplateVersions[file] = versions.filter(file => {
-        const index = file.indexOf(EXTENSION)
-
-        return index > 0 && ((index + EXTENSION.length) === file.length)
+        return path.extname(file) === EXTENSION
       }).map(version => {
         return path.basename(version, EXTENSION)
       })
