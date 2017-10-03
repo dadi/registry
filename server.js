@@ -3,6 +3,8 @@
 const fs = require('fs')
 const mkdirp = require('mkdirp')
 const path = require('path')
+
+const EXTENSION = '.zip'
 const OUTPUT_DIR = path.join(__dirname, 'output')
 
 const files = fs.readdirSync(__dirname)
@@ -20,7 +22,11 @@ files.forEach(file => {
         path.join(__dirname, file, 'boilerplate')
       )
 
-      boilerplateVersions[file] = versions
+      boilerplateVersions[file] = versions.filter(file => {
+        return path.extname(file) === EXTENSION
+      }).map(version => {
+        return path.basename(version, EXTENSION)
+      })
     } catch (e) {}
   }
 })
