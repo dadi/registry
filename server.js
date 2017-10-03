@@ -23,7 +23,9 @@ files.forEach(file => {
       )
 
       boilerplateVersions[file] = versions.filter(file => {
-        return path.extname(file) === EXTENSION
+        const index = file.indexOf(EXTENSION)
+
+        return index > 0 && ((index + EXTENSION.length) === file.length)
       }).map(version => {
         return path.basename(version, EXTENSION)
       })
