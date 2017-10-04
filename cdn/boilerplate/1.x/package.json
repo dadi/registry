@@ -2,6 +2,6 @@
   "name": "dadi-cdn",
   "main": "server.js",
   "dependencies": {
-    "@dadi/cdn": "1.11.x"
+    "@dadi/cdn": "1.x"
   }
 }
