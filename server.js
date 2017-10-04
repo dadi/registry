@@ -1,38 +1,82 @@
 'use strict'
 
-const fs = require('fs')
-const mkdirp = require('mkdirp')
+const archiver = require('archiver')
+const fs = require('fs-extra')
 const path = require('path')
+const walk = require('walk')
 
-const EXTENSION = '.zip'
-const OUTPUT_DIR = path.join(__dirname, 'output')
-
-const files = fs.readdirSync(__dirname)
-
-let boilerplateVersions = {}
-
-files.forEach(file => {
-  if (file.indexOf('.') === 0) return
-
-  const stats = fs.statSync(path.join(__dirname, file))
-
-  if (stats.isDirectory()) {
-    try {
-      const versions = fs.readdirSync(
-        path.join(__dirname, file, 'boilerplate')
-      )
-
-      boilerplateVersions[file] = versions.filter(file => {
-        return path.extname(file) === EXTENSION
-      }).map(version => {
-        return path.basename(version, EXTENSION)
-      })
-    } catch (e) {}
-  }
+const outputDir = path.join(__dirname, 'output')
+const walker = walk.walk('.', {
+  filters: ['.git', 'node_modules'],
+  followLinks: false
 })
 
-mkdirp.sync(OUTPUT_DIR)
-fs.writeFileSync(
-  path.join(OUTPUT_DIR, 'versions.json'),
-  JSON.stringify(boilerplateVersions)
-)
+let asyncQueue = []
+let boilerplateVersions = {}
+let walkerCache = {}
+
+function createZipFromDirectory(directory, destination, name) {
+  const output = fs.createWriteStream(destination)
+  const archive = archiver('zip', {
+    zlib: {
+      level: 9
+    }
+  })
+
+  return new Promise((resolve, reject) => {
+    archive
+      .on('close', resolve)
+      .on('error', reject)
+      .pipe(output)
+      
+    archive.directory(directory, name)
+    archive.finalize()
+  })
+}
+
+walker.on('directory', (root, stats, next) => {
+  if (walkerCache[root]) {
+    return next()
+  }
+
+  walkerCache[root] = true
+
+  const parts = root.split('/')
+
+  // Looking for boilerplate directories
+  if (parts.length === 4 && parts[2] === 'boilerplate') {
+    const product = parts[1]
+
+    // Adding version to versions endpoint.
+    boilerplateVersions[product] = boilerplateVersions[product] || []
+    boilerplateVersions[product].push(parts[3])
+
+    // Creating ZIP file.
+    const destinationDirectory = path.join(
+      outputDir,
+      root.split('/').slice(0, -1).join('/')
+    )
+
+    asyncQueue.push(
+      fs.ensureDir(destinationDirectory).then(() => {
+        return createZipFromDirectory(
+          root,
+          path.join(destinationDirectory, `${parts[3]}.zip`),
+          parts[3]
+        )
+      })
+    )
+  }
+
+  next()
+})
+
+walker.on('end', () => {
+  // Write versions endpoint.
+  fs.writeFileSync(
+    path.join(outputDir, 'versions.json'),
+    JSON.stringify(boilerplateVersions)
+  )
+
+  return Promise.all(asyncQueue)
+})
