@@ -54,7 +54,8 @@ walker.on('directory', (root, stats, next) => {
     // Creating ZIP file.
     const destinationDirectory = path.join(
       outputDir,
-      root.split('/').slice(0, -1).join('/')
+      'boilerplates',
+      product
     )
 
     asyncQueue.push(
@@ -74,7 +75,7 @@ walker.on('directory', (root, stats, next) => {
 walker.on('end', () => {
   // Write versions endpoint.
   fs.writeFileSync(
-    path.join(outputDir, 'versions.json'),
+    path.join(outputDir, 'boilerplates', 'versions.json'),
     JSON.stringify(boilerplateVersions)
   )
 
