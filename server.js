@@ -74,10 +74,14 @@ walker.on('directory', (root, stats, next) => {
 
 walker.on('end', () => {
   // Write versions endpoint.
-  fs.writeFileSync(
-    path.join(outputDir, 'boilerplates', 'versions.json'),
-    JSON.stringify(boilerplateVersions)
-  )
+  const versionsDirectory = path.join(outputDir, 'boilerplates', 'v1')
+
+  fs.ensureDir(versionsDirectory).then(() => {
+    fs.writeFileSync(
+      path.join(versionsDirectory, 'versions.json'),
+      JSON.stringify(boilerplateVersions)
+    )
+  })
 
   return Promise.all(asyncQueue)
 })
