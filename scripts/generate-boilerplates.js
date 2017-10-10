@@ -5,7 +5,11 @@ const fs = require('fs-extra')
 const path = require('path')
 const walk = require('walk')
 
-const outputDir = path.join(__dirname, 'output')
+const outputDir = path.join(
+  __dirname,
+  '..',
+  'output'
+)
 const walker = walk.walk('.', {
   filters: ['.git', 'node_modules'],
   followLinks: false
