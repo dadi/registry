@@ -14,12 +14,16 @@ const outputDir = path.join(
 )
 
 try {
-  const pkgJson = require(
+  const corePkgJson = require(
     path.join(cliPath, 'core', 'package.json')
+  )
+  const wrapperPkgJson = require(
+    path.join(cliPath, 'wrapper', 'package.json')
   )
   const payload = {
     generated: Date.now(),
-    version: pkgJson.version
+    versionCore: corePkgJson.version,
+    versionWrapper: wrapperPkgJson.version
   }
 
   fs.ensureDir(
