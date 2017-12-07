@@ -82,7 +82,7 @@ const migrateEnvironment = environment => {
     ]
 
     return Promise.all(queue)
-  }).catch(console.log)
+  })
 }
 
 const readJson = filePath => {
@@ -128,5 +128,9 @@ const writeJson = (filePath, contents) => {
 }
 
 findEnvironments().then(environments => {
-  environments.forEach(migrateEnvironment)
+  return Promise.all(environments.map(migrateEnvironment))
+}).catch(err => {
+  console.log('Something went wrong. Are you running this command from a DADI API 2.0 directory?')
+
+  process.exit(1)
 })
