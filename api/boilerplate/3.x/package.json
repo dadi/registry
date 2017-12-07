@@ -2,6 +2,6 @@
   "name": "my-api",
   "main": "server.js",
   "dependencies": {
-    "@dadi/api": "dadi/api#develop"
+    "@dadi/api": "3.x"
   }
 }
