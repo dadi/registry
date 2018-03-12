@@ -1,0 +1,89 @@
+{
+  "cluster": false,
+  "server": {
+    "host": "127.0.0.1",
+    "port": 8001
+  },
+  "images": {
+    "directory": {
+      "enabled": true,
+      "path": "./images"
+    },
+    "s3": {
+      "enabled": false,
+      "accessKey": "",
+      "secretKey": "",
+      "bucketName": "",
+      "region": ""
+    },
+    "remote": {
+      "enabled": false,
+      "path": ""
+    }
+  },
+  "assets": {
+    "directory": {
+      "enabled": true,
+      "path": "./public"
+    },
+    "s3": {
+      "enabled": false,
+      "accessKey": "",
+      "secretKey": "",
+      "bucketName": "",
+      "region": ""
+    },
+    "remote": {
+      "enabled": false,
+      "path": ""
+    }
+  },
+  "caching": {
+    "ttl": 60,
+    "directory": {
+      "enabled": true,
+      "path": "./cache/",
+      "autoFlush": true,
+      "autoFlushInterval": 120
+    },
+    "redis": {
+      "enabled": false,
+      "host": "127.0.0.1",
+      "port": 6379
+    }
+  },
+  "logging": {
+    "enabled": true,
+    "level": "debug",
+    "path": "./log",
+    "filename": "cdn",
+    "extension": "log",
+    "accessLog": {
+      "enabled": true
+    }
+  },
+  "security": {
+    "maxWidth": 2048,
+    "maxHeight": 1024
+  },
+  "auth": {
+    "clientId": "1235488",
+    "secret": "asd544see68e52"
+  },
+  "headers": {
+    "useGzipCompression": true,
+    "cacheControl": {
+      "default": "public, max-age=3600",
+      "paths": [
+
+      ],
+      "mimetypes": [
+        { "image/jpeg": "public, max-age=86400" },
+        { "text/css": "public, max-age=86400" },
+        { "text/javascript": "public, max-age=86400" },
+        { "application/javascript": "public, max-age=86400" }
+      ]
+    }
+  },
+  "feedback": false
+}
