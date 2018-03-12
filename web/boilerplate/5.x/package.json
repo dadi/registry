@@ -1,0 +1,7 @@
+{
+  "name": "@dadi/web-boilerplate",
+  "main": "server.js",
+  "dependencies": {
+    "@dadi/web": "5.x"
+  }
+}
