@@ -1,12 +1,12 @@
 ---
-date: 2016-05-10
+date: 2018-05-29
 title: Successfully installed and running!
 author: The DADI Team
 ---
 
 We've setup a sample blog configuration for you to explore and modify. For example, this post can be found in `workspace/posts/welcome.md`
 
-The next step is probably to explore the [documentation](http://docs.dadi.tech) and the source code to our site, [DADI.tech](https://dadi.tech) as an [example project](https://github.com/dadi/dadi.tech).
+The next step is probably to explore the [documentation](http://docs.dadi.cloud) and the source code to our site, [DADI.cloud](https://dadi.cloud) as an [example project](https://github.com/dadi/cloud).
 
 ### Things to try
 
@@ -37,4 +37,4 @@ The next step is probably to explore the [documentation](http://docs.dadi.tech) 
 }
 ```
 
-3. Learn more about [DADI API](https://dadi.tech/platform/api/) and how you can use it with your new installation of <em>DADI Web</em>
+3. Learn more about [DADI API](https://dadi.cloud/en/api/) and how you can use it with your new installation of <em>DADI Web</em>
