@@ -11,6 +11,6 @@
     "port": 3001
   },
   "cluster": false,
-  "allowJsonView": true,
+  "allowDebugView": true,
   "debug": true
 }
