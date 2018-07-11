@@ -1,0 +1,29 @@
+{
+  "fields": {
+    "name": {
+      "type": "String",
+      "comments": "This is the human name",
+      "example": "John Doe",
+      "validation": {},
+      "required": false,
+      "message": "can't be empty"
+    }
+  },
+  "settings": {
+    "cache": false,
+    "authenticate": true,
+    "count": 40,
+    "sort": "name",
+    "sortOrder": 1,
+    "storeRevisions": true,
+    "revisionCollection": "userHistory",
+    "index": [
+      {
+        "keys": {
+          "name": 1
+        }
+      }
+    ],
+    "description": "Represents members who have registered with the system."
+  }
+}

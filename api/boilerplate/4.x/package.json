@@ -1,0 +1,7 @@
+{
+  "name": "my-api",
+  "main": "server.js",
+  "dependencies": {
+    "@dadi/api": "4.x"
+  }
+}
