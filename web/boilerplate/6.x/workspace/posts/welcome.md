@@ -37,4 +37,4 @@ The next step is probably to explore the [documentation](http://docs.dadi.cloud)
 }
 ```
 
-3. Learn more about [DADI API](https://dadi.cloud/en/api/) and how you can use it with your new installation of <em>DADI Web</em>
+3. Learn more about [DADI API](https://dadi.cloud/api/) and how you can use it with your new installation of <em>DADI Web</em>
