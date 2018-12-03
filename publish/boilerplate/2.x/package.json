@@ -2,6 +2,6 @@
   "name": "dadi-publish",
   "main": "server.js",
   "dependencies": {
-    "@dadi/publish": "beta"
+    "@dadi/publish": "2.x"
   }
 }
