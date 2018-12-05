@@ -1,0 +1,7 @@
+{
+  "name": "dadi-publish",
+  "main": "server.js",
+  "dependencies": {
+    "@dadi/publish": "2.x"
+  }
+}
